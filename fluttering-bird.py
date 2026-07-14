@@ -27,6 +27,8 @@ class Game:
         floor_y = 688
         self.floor = pg.sprite.Group(Floor(0, floor_y), Floor(self.width, floor_y))
 
+        self.paused = False
+
     def run(self):
         while self.running:
             self.screen.fill((0, 0, 0))
@@ -35,14 +37,17 @@ class Game:
                 if event.type == QUIT:
                     self.running = False
                 if event.type == KEYDOWN:
-                    if event.key == K_SPACE:
+                    if event.key == K_SPACE and not self.paused:
                         self.bird.flap()
-
-            self.bird.update(self.dt)
+                    elif event.key == K_p:
+                        self.paused = not self.paused
+            
             self.bird.draw(self.screen)
-
-            self.floor.update(self.width)
             self.floor.draw(self.screen)
+
+            if not self.paused:
+                self.bird.update(self.dt)
+                self.floor.update(self.width)
 
             pg.display.flip()
             self.dt = self.clock.tick(self.fps) / 1000
