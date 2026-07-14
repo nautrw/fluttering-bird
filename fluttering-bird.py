@@ -21,7 +21,7 @@ class Game:
                     self.running = False
 
         pg.display.flip()
-        self.dt = self.clock.tick(self.fps)
+        self.dt = self.clock.tick(self.fps) / 1000
 
 if __name__ == "__main__":
     Game().run()
