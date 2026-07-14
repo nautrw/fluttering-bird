@@ -13,15 +13,22 @@ class Bird(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
 
-        self.fall_speed = 250
+        self.direction = pg.math.Vector2(0, 0)
+        self.gravity = 0.4
+        self.flap_y_delta = -9
 
     def update(self, dt: int | float):
         pressed = pg.key.get_pressed()
 
         if pressed[K_SPACE]:
-            self.rect.bottom -= round(self.fall_speed * dt)
-        else:
-            self.rect.bottom += round(self.fall_speed * dt)
+            if self.direction.y > 0:
+                self.flap()
+
+        self.direction.y += self.gravity
+        self.rect.y += self.direction.y
+
+    def flap(self):
+        self.direction.y = self.flap_y_delta
 
     def draw(self, screen: pg.Surface):
         screen.blit(self.image, self.rect)
