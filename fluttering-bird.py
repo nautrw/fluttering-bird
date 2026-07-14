@@ -15,7 +15,7 @@ class Game:
         self.clock = pg.time.Clock()
         self.dt = 0
 
-        self.bird = Bird(self.width * .25, self.height / 2)
+        self.bird = Bird(self.width * .15, self.height / 2)
 
     def run(self):
         while self.running:
