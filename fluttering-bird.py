@@ -1,6 +1,7 @@
 import pygame as pg
 from pygame.locals import *
 from scripts.bird import Bird
+from scripts.floor import Floor
 
 class Game:
     def __init__(self, width: int = 400, height = 800, fps: int = 60):
@@ -17,6 +18,8 @@ class Game:
 
         self.bird = Bird(self.width * .15, self.height / 2)
 
+        self.floor = pg.sprite.Group(Floor(0, 700), Floor(400, 700))
+
     def run(self):
         while self.running:
             self.screen.fill((0, 0, 0))
@@ -30,6 +33,9 @@ class Game:
 
             self.bird.update(self.dt)
             self.bird.draw(self.screen)
+
+            self.floor.update()
+            self.floor.draw(self.screen)
 
             pg.display.flip()
             self.dt = self.clock.tick(self.fps) / 1000
