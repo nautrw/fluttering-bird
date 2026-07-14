@@ -22,7 +22,7 @@ class Bird(pg.sprite.Sprite):
         self.direction.y += self.gravity * dt
         self.rect.y += self.direction.y * dt
 
-        angle = max(-90, min(180, self.direction.y * 0.1))
+        angle = min(90, self.direction.y * 0.1)
         self.image = pg.transform.rotate(self.original_image, -angle)
         self.rect = self.image.get_rect(center=self.rect.center)
 
