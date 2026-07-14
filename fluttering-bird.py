@@ -24,6 +24,9 @@ class Game:
             for event in pg.event.get():
                 if event.type == QUIT:
                     self.running = False
+                if event.type == KEYDOWN:
+                    if event.key == K_SPACE:
+                        self.bird.flap()
 
             self.bird.update(self.dt)
             self.bird.draw(self.screen)

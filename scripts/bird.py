@@ -18,14 +18,11 @@ class Bird(pg.sprite.Sprite):
         self.flap_y_delta = -400
 
     def update(self, dt: int | float):
-        pressed = pg.key.get_pressed()
-
-        if pressed[K_SPACE]:
-            if self.direction.y > 0:
-                self.direction.y = self.flap_y_delta
-
         self.direction.y += self.gravity * dt
         self.rect.y += self.direction.y * dt
+
+    def flap(self):
+        self.direction.y = self.flap_y_delta
 
     def draw(self, screen: pg.Surface):
         screen.blit(self.image, self.rect)
