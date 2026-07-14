@@ -9,7 +9,8 @@ class Bird(pg.sprite.Sprite):
     def __init__(self, x: int | float, y: int | float):
         super().__init__()
 
-        self.image = load_sprite('bird')
+        self.original_image = load_sprite('bird')
+        self.image = self.original_image
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
 
@@ -20,6 +21,10 @@ class Bird(pg.sprite.Sprite):
     def update(self, dt: int | float):
         self.direction.y += self.gravity * dt
         self.rect.y += self.direction.y * dt
+
+        angle = max(-90, min(180, self.direction.y * 0.1))
+        self.image = pg.transform.rotate(self.original_image, -angle)
+        self.rect = self.image.get_rect(center=self.rect.center)
 
     def flap(self):
         self.direction.y = self.flap_y_delta
