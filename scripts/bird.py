@@ -14,20 +14,20 @@ class Bird(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
 
-        self.direction = pg.math.Vector2(0, 0)
+        self.velocity = 0
         self.gravity = 1200
         self.flap_y_delta = -400
 
     def update(self, dt: int | float):
-        self.direction.y += self.gravity * dt
-        self.rect.y += self.direction.y * dt
+        self.velocity += self.gravity * dt # apply gravity
+        self.rect.y += self.velocity * dt
 
-        angle = min(90, self.direction.y * 0.1)
+        angle = min(90, self.velocity * 0.1)
         self.image = pg.transform.rotate(self.original_image, -angle)
         self.rect = self.image.get_rect(center=self.rect.center)
 
     def flap(self):
-        self.direction.y = self.flap_y_delta
+        self.velocity = self.flap_y_delta
 
     def draw(self, screen: pg.Surface):
         screen.blit(self.image, self.rect)
