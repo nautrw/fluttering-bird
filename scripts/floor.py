@@ -22,7 +22,7 @@ class Floor(pg.sprite.Sprite):
             # The floors are actually 2 floor sprites that keep wrapping behind
             # each other, so as to create the effect that its infinite
             # this is the part that makes it wrap
-            self.rect.x = self.rect.width
+            self.rect.x += self.rect.width * 2
 
     def draw(self, screen: pg.Surface):
         screen.blit(self.image, self.rect)
