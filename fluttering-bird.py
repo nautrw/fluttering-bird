@@ -8,7 +8,7 @@ from scripts.floor import Floor
 
 
 class Game:
-    def __init__(self, width: int = 400, height=800, fps: int = 60):
+    def __init__(self, width: int = 400, height=800, fps: int = 180):
         pg.init()
 
         self.width = width
@@ -47,7 +47,7 @@ class Game:
 
             if not self.paused:
                 self.bird.update(self.dt)
-                self.floor.update(self.width)
+                self.floor.update(self.dt)
 
             pg.display.flip()
             self.dt = self.clock.tick(self.fps) / 1000
