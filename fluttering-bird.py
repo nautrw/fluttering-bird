@@ -3,6 +3,7 @@ from math import floor
 
 import pygame as pg
 from pygame.locals import *
+from scripts.utils import load_sprite
 
 from scripts.bird import Bird
 from scripts.floor import Floor
@@ -10,7 +11,7 @@ from scripts.pipe import Pipe
 
 
 class Game:
-    def __init__(self, width: int = 400, height=800, fps: int = 60):
+    def __init__(self, width: int = 400, height=512, fps: int = 60):
         pg.init()
 
         self.width = width
@@ -26,7 +27,8 @@ class Game:
 
         # The floors are actually 2 floor sprites that keep wrapping behind
         # each other, so as to create the effect that its infinite
-        floor_y = 688
+        floor_height = load_sprite("floor").get_rect().height
+        floor_y = self.height - floor_height
         self.floor = pg.sprite.Group(Floor(0, floor_y), Floor(self.width, floor_y))
         
         self.pipes = pg.sprite.Group()
