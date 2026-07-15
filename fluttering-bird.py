@@ -8,7 +8,7 @@ from scripts.floor import Floor
 
 
 class Game:
-    def __init__(self, width: int = 400, height=800, fps: int = 180):
+    def __init__(self, width: int = 400, height=800, fps: int = 60):
         pg.init()
 
         self.width = width
