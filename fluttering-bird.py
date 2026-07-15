@@ -59,8 +59,8 @@ class Game:
                 self.pipe_spawn_dt_timer = 0
 
             self.bird.draw(self.screen)
-            self.floor.draw(self.screen)
             self.pipes.draw(self.screen)
+            self.floor.draw(self.screen)
 
             if not self.paused:
                 self.bird.update(self.dt)
