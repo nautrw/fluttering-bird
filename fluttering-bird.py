@@ -11,7 +11,7 @@ from scripts.pipe import Pipe
 
 
 class Game:
-    def __init__(self, width: int = 400, height=512, fps: int = 60):
+    def __init__(self, width: int = 400, height=700, fps: int = 60):
         pg.init()
 
         self.width = width
@@ -34,6 +34,8 @@ class Game:
         self.pipes = pg.sprite.Group()
         self.pipe_spawn_dt_count = 1.5
         self.pipe_spawn_dt_timer = 0
+        self.pipe_min_y = int(load_sprite('pipe').get_rect().height * .35)
+        self.pipe_max_y = floor_y - 100
 
         self.paused = False
 
@@ -51,7 +53,7 @@ class Game:
                         self.paused = not self.paused
             
             if self.pipe_spawn_dt_timer >= self.pipe_spawn_dt_count:
-                pipe = Pipe(self.width, random.randint(120, 588))
+                pipe = Pipe(self.width, random.randint(self.pipe_min_y, self.pipe_max_y))
                 self.pipes.add(pipe)
                 self.pipe_spawn_dt_timer = 0
 
