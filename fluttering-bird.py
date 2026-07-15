@@ -1,3 +1,4 @@
+import random
 from math import floor
 
 import pygame as pg
@@ -5,6 +6,7 @@ from pygame.locals import *
 
 from scripts.bird import Bird
 from scripts.floor import Floor
+from scripts.pipe import Pipe
 
 
 class Game:
@@ -26,6 +28,10 @@ class Game:
         # each other, so as to create the effect that its infinite
         floor_y = 688
         self.floor = pg.sprite.Group(Floor(0, floor_y), Floor(self.width, floor_y))
+        
+        self.pipes = pg.sprite.Group()
+        self.pipe_spawn_dt_count = 2
+        self.pipe_spawn_dt_timer = 0
 
         self.paused = False
 
@@ -42,15 +48,23 @@ class Game:
                     elif event.key == K_p:
                         self.paused = not self.paused
             
+            if self.pipe_spawn_dt_timer >= self.pipe_spawn_dt_count:
+                pipe = Pipe(self.width, random.randint(0, 588))
+                self.pipes.add(pipe)
+                self.pipe_spawn_dt_timer = 0
+
             self.bird.draw(self.screen)
             self.floor.draw(self.screen)
+            self.pipes.draw(self.screen)
 
             if not self.paused:
                 self.bird.update(self.dt)
                 self.floor.update(self.dt)
+                self.pipes.update(self.dt)
 
             pg.display.flip()
             self.dt = self.clock.tick(self.fps) / 1000
+            self.pipe_spawn_dt_timer += self.dt
 
 
 if __name__ == "__main__":
