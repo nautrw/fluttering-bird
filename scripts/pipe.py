@@ -16,14 +16,14 @@ class Pipe(pg.sprite.Sprite):
         self.pipe_rect = self.pipe_sprite.get_rect()
 
         self.top = pg.transform.flip(self.pipe_sprite, False, True)
-        self.top_rect = self.top.get_rect(topleft=(x, 0))
+        self.top_rect = self.top.get_rect(topleft=(0, 0))
 
         self.bottom = self.pipe_sprite
-        self.bottom_rect = self.bottom.get_rect(topleft=(x, self.pipe_rect.height + self.gap))
+        self.bottom_rect = self.bottom.get_rect(topleft=(0, self.pipe_rect.height + self.gap))
         
         self.image = pg.Surface((self.pipe_rect.width, self.pipe_rect.height * 2 + self.gap), flags=SRCALPHA)
-        self.image.blit(self.top, (0, 0)) 
-        self.image.blit(self.bottom, (0, self.pipe_rect.height + self.gap)) 
+        self.image.blit(self.top, self.top_rect) 
+        self.image.blit(self.bottom, self.bottom_rect) 
         self.rect = self.image.get_rect(midleft=(x, y))
         self.mask = pg.mask.from_surface(self.image)
 
