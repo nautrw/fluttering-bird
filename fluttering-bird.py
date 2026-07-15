@@ -30,7 +30,7 @@ class Game:
         self.floor = pg.sprite.Group(Floor(0, floor_y), Floor(self.width, floor_y))
         
         self.pipes = pg.sprite.Group()
-        self.pipe_spawn_dt_count = 2
+        self.pipe_spawn_dt_count = 1.5
         self.pipe_spawn_dt_timer = 0
 
         self.paused = False
@@ -49,7 +49,7 @@ class Game:
                         self.paused = not self.paused
             
             if self.pipe_spawn_dt_timer >= self.pipe_spawn_dt_count:
-                pipe = Pipe(self.width, random.randint(0, 588))
+                pipe = Pipe(self.width, random.randint(120, 588))
                 self.pipes.add(pipe)
                 self.pipe_spawn_dt_timer = 0
 
