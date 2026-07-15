@@ -9,7 +9,7 @@ class Pipe(pg.sprite.Sprite):
     def __init__(self, x: int | float, y: int | float):
         super().__init__()
 
-        self.gap = 200
+        self.gap = 150
         self.speed = 200
 
         self.pipe_sprite = load_sprite("pipe")
