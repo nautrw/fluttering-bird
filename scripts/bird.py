@@ -18,6 +18,8 @@ class Bird(pg.sprite.Sprite):
         self.gravity = 1200
         self.flap_y_delta = -400
 
+        self.mask = pg.mask.from_surface(self.image)
+
     def update(self, dt: int | float):
         self.velocity += self.gravity * dt # apply gravity
         self.rect.y += self.velocity * dt

@@ -67,6 +67,9 @@ class Game:
                 self.floor.update(self.dt)
                 self.pipes.update(self.dt)
 
+            if pg.sprite.spritecollide(self.bird, self.pipes, False, pg.sprite.collide_mask): # ty:ignore
+                exit()
+
             pg.display.flip()
             self.dt = self.clock.tick(self.fps) / 1000
             self.pipe_spawn_dt_timer += self.dt

@@ -25,6 +25,7 @@ class Pipe(pg.sprite.Sprite):
         self.image.blit(self.top, (0, 0)) 
         self.image.blit(self.bottom, (0, self.pipe_rect.height + self.gap)) 
         self.rect = self.image.get_rect(midleft=(x, y))
+        self.mask = pg.mask.from_surface(self.image)
 
     def update(self, dt: int | float):
         self.rect.x -= round(self.speed * dt)
