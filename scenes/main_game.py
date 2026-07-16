@@ -45,7 +45,7 @@ class MainGameScene(Scene):
                     self.bird.flap()
 
     def render(self):
-        self.manager.screen.fill("black")
+        self.manager.screen.fill("cornflowerblue")
         self.bird.draw(self.manager.screen)
         self.pipes.draw(self.manager.screen)
         self.floor.draw(self.manager.screen)
