@@ -5,6 +5,7 @@ import pygame as pg
 from pygame.locals import *
 from utils import load_sprite
 from core.scene_manager import Scene, SceneManager
+from scenes.game_over import GameOverScene
 import pygame_gui as pgui
 
 from entities.bird import Bird
@@ -61,7 +62,7 @@ class MainGameScene(Scene):
             self.pipe_spawn_dt_timer = 0
 
         if pg.sprite.spritecollide(self.bird, self.pipes, False, pg.sprite.collide_mask): # ty:ignore
-            exit()
+            self.manager.go_to(GameOverScene(self.manager))
 
         for pipe in self.pipes:
             if not pipe.passed and pipe.rect.right < self.bird.rect.centerx:
