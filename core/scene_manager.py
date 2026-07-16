@@ -20,5 +20,5 @@ class Scene:
     def update(self):
         pass
     
-    def render(self):
+    def render(self, screen: pg.Surface):
         pass
