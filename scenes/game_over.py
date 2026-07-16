@@ -10,7 +10,7 @@ class GameOverScene(Scene):
         game_over_text_rect = pg.Rect(0, 0, 300, 200)
         self.game_over_text = pgui.elements.UILabel(game_over_text_rect, "Game Over", self.manager.ui_manager, anchors = {'centerx': 'centerx'})
 
-        restart_button_rect = pg.Rect(0, 0, 200, 100)
+        restart_button_rect = pg.Rect(0, 0, 300, 100)
         self.restart_button = pgui.elements.UIButton(restart_button_rect, "Play Again", self.manager.ui_manager, anchors={'center': 'center'})
     
     def render(self):
