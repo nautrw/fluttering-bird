@@ -5,9 +5,12 @@ class SceneManager:
     def __init__(self, screen: pg.Surface, ui_manager: pgui.UIManager):
         self.screen = screen
         self.ui_manager = ui_manager
+        self.scene = Scene(self)
 
     def go_to(self, scene: Scene):
+        self.scene.on_exit()
         self.scene = scene
+        self.scene.on_enter()
 
 class Scene:
     def __init__(self, manager: SceneManager):
@@ -20,4 +23,10 @@ class Scene:
         pass
     
     def render(self):
+        pass
+
+    def on_enter(self):
+        pass
+
+    def on_exit(self):
         pass

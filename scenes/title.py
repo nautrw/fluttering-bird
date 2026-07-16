@@ -25,5 +25,9 @@ class TitleScene(Scene):
                 if event.ui_element == self.play_button:
                     self.manager.go_to(MainGameScene(self.manager))
 
+    def on_exit(self):
+        self.title.kill()
+        self.play_button.kill()
+
     def update(self, dt: int | float):
         self.manager.ui_manager.update(dt)
