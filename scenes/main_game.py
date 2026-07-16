@@ -75,3 +75,6 @@ class MainGameScene(Scene):
         self.pipes.update(dt)
 
         self.pipe_spawn_dt_timer += dt
+
+    def on_exit(self):
+        self.score_label.kill()
