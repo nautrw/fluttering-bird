@@ -1,24 +1,24 @@
 import pygame as pg
+import pygame_gui as pgui
 
 class SceneManager:
-    def __init__(self):
-        pass
+    def __init__(self, screen: pg.Surface, ui_manager: pgui.UIManager):
+        self.screen = screen
+        self.ui_manager = ui_manager
 
     def go_to(self, scene: Scene):
         self.scene = scene
-        self.scene.manager = self
 
 class Scene:
-    manager: SceneManager
+    def __init__(self, manager: SceneManager):
+        self.manager = manager
 
-    def __init__(self):
-        pass
-
-    def handle_event(self, event: list[pg.event.Event]):
-        pass
+    def handle_events(self, events: list[pg.event.Event]):
+        for event in events:
+            self.manager.ui_manager.process_events(event)
     
     def update(self):
         pass
     
-    def render(self, screen: pg.Surface):
+    def render(self):
         pass

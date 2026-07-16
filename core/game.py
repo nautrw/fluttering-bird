@@ -6,6 +6,7 @@ from pygame.locals import *
 from utils import load_sprite
 from core.scene_manager import SceneManager
 from scenes.title import TitleScene
+import pygame_gui as pgui
 
 from entities.bird import Bird
 from entities.floor import Floor
@@ -40,21 +41,15 @@ class Game:
         self.pipe_max_y = floor_y - 150
 
         self.paused = False
-        self.manager = SceneManager()
+
+        self.ui_manager = pgui.UIManager((self.width, self.height))
+        self.manager = SceneManager(self.screen, self.ui_manager)
         self.manager.go_to(TitleScene())
 
     def run(self):
         # while self.running:
         #     self.screen.fill((0, 0, 0))
 
-            # for event in pg.event.get():
-            #     if event.type == QUIT:
-            #         self.running = False
-            #     if event.type == KEYDOWN:
-            #         if event.key == K_SPACE and not self.paused:
-            #             self.bird.flap()
-            #         elif event.key == K_p:
-            #             self.paused = not self.paused
             #
             # if self.pipe_spawn_dt_timer >= self.pipe_spawn_dt_count:
             #     pipe_y = random.randint(self.pipe_min_y, self.pipe_max_y)
@@ -86,8 +81,11 @@ class Game:
             if pg.event.get(QUIT):
                 exit()
 
-            self.manager.scene.handle_event(pg.event.get())
+            self.manager.scene.handle_events(pg.event.get())
             self.manager.scene.update()
-            self.manager.scene.render(self.screen)
+            self.manager.scene.render()
 
+            self.dt = self.clock.tick(self.fps) / 1000
+            self.ui_manager.update(self.dt)
+            self.ui_manager.draw_ui(self.screen)
             pg.display.flip()
