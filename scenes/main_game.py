@@ -44,6 +44,9 @@ class MainGameScene(Scene):
             if event.type == KEYDOWN:
                 if event.key == K_SPACE:
                     self.bird.flap()
+            elif event.type == MOUSEBUTTONDOWN:
+                if event.button == BUTTON_LEFT:
+                    self.bird.flap() 
 
     def render(self):
         self.manager.screen.fill("cornflowerblue")
