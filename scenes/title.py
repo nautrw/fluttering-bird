@@ -2,6 +2,7 @@ from utils import load_font
 import pygame as pg
 from pygame import freetype as ft
 from core.scene_manager import Scene, SceneManager
+from scenes.main_game import MainGameScene
 import pygame_gui as pgui
 
 class TitleScene(Scene):
@@ -29,7 +30,7 @@ class TitleScene(Scene):
 
             if event.type == pgui.UI_BUTTON_PRESSED:
                 if event.ui_element == self.play_button:
-                    print("pressed")
+                    self.manager.go_to(MainGameScene(self.manager))
 
     def update(self, dt: int | float):
         self.manager.ui_manager.update(dt)
