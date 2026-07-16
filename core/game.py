@@ -82,7 +82,12 @@ class Game:
             # pg.display.flip()
             # self.dt = self.clock.tick(self.fps) / 1000
             # self.pipe_spawn_dt_timer += self.dt
-        
-        self.manager.scene.handle_event(pg.event.get())
-        self.manager.scene.update()
-        self.manager.scene.render()
+        while self.running: 
+            if pg.event.get(QUIT):
+                exit()
+
+            self.manager.scene.handle_event(pg.event.get())
+            self.manager.scene.update()
+            self.manager.scene.render(self.screen)
+
+            pg.display.flip()
