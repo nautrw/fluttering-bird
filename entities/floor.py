@@ -15,6 +15,8 @@ class Floor(pg.sprite.Sprite):
 
         self.scroll_speed = 200
 
+        self.mask = pg.mask.from_surface(self.image)
+
     def update(self, dt: int | float):
         self.rect.x -= round(self.scroll_speed * dt)
 

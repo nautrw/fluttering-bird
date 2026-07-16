@@ -61,8 +61,11 @@ class MainGameScene(Scene):
             self.pipes.add(pipe)
             self.pipe_spawn_dt_timer = 0
 
-        if pg.sprite.spritecollide(self.bird, self.pipes, False, pg.sprite.collide_mask): # ty:ignore
-            self.manager.go_to(GameOverScene(self.manager))
+        if pg.sprite.spritecollide(self.bird, self.pipes, False, pg.sprite.collide_mask): # ty:ignore[invalid-argument-type]
+            self.gameover()
+
+        if pg.sprite.spritecollide(self.bird, self.floor, False, pg.sprite.collide_mask): # ty:ignore[invalid-argument-type]
+            self.gameover()
 
         for pipe in self.pipes:
             if not pipe.passed and pipe.rect.right < self.bird.rect.centerx:
@@ -78,3 +81,6 @@ class MainGameScene(Scene):
 
     def on_exit(self):
         self.score_label.kill()
+
+    def gameover(self):
+        self.manager.go_to(GameOverScene(self.manager))
