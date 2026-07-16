@@ -1,6 +1,6 @@
 import pygame as pg
 from pygame.locals import *
-from scripts.utils import load_sprite
+from utils import load_sprite
 
 class Bird(pg.sprite.Sprite):
     rect: pg.Rect | pg.FRect

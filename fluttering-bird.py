@@ -3,11 +3,11 @@ from math import floor
 
 import pygame as pg
 from pygame.locals import *
-from scripts.utils import load_sprite
+from utils import load_sprite
 
-from scripts.bird import Bird
-from scripts.floor import Floor
-from scripts.pipe import Pipe
+from entities.bird import Bird
+from entities.floor import Floor
+from entities.pipe import Pipe
 
 
 class Game:

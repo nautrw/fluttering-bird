@@ -1,6 +1,6 @@
 import pygame as pg
 from pygame.locals import *
-from scripts.utils import load_sprite
+from utils import load_sprite
 
 class Floor(pg.sprite.Sprite):
     rect: pg.Rect | pg.FRect
