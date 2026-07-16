@@ -1,11 +1,12 @@
 from utils import load_font
 import pygame as pg
 from pygame import freetype as ft
-from core.scene_manager import Scene
+from core.scene_manager import Scene, SceneManager
 import pygame_gui as pgui
 
 class TitleScene(Scene):
-    def __init__(self):
+    def __init__(self, manager: SceneManager):
+        super().__init__(manager)
         ft.init()
 
         self.font = load_font("Boxy-Bold")

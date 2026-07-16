@@ -44,7 +44,7 @@ class Game:
 
         self.ui_manager = pgui.UIManager((self.width, self.height))
         self.manager = SceneManager(self.screen, self.ui_manager)
-        self.manager.go_to(TitleScene())
+        self.manager.go_to(TitleScene(self.manager))
 
     def run(self):
         # while self.running:
