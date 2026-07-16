@@ -4,6 +4,8 @@ from math import floor
 import pygame as pg
 from pygame.locals import *
 from utils import load_sprite
+from core.scene_manager import SceneManager
+from scenes.title import TitleScene
 
 from entities.bird import Bird
 from entities.floor import Floor
@@ -38,43 +40,49 @@ class Game:
         self.pipe_max_y = floor_y - 150
 
         self.paused = False
+        self.manager = SceneManager()
+        self.manager.go_to(TitleScene())
 
     def run(self):
-        while self.running:
-            self.screen.fill((0, 0, 0))
+        # while self.running:
+        #     self.screen.fill((0, 0, 0))
 
-            for event in pg.event.get():
-                if event.type == QUIT:
-                    self.running = False
-                if event.type == KEYDOWN:
-                    if event.key == K_SPACE and not self.paused:
-                        self.bird.flap()
-                    elif event.key == K_p:
-                        self.paused = not self.paused
-            
-            if self.pipe_spawn_dt_timer >= self.pipe_spawn_dt_count:
-                pipe_y = random.randint(self.pipe_min_y, self.pipe_max_y)
-                pipe = Pipe(self.width, pipe_y)
-                self.pipes.add(pipe)
-                self.pipe_spawn_dt_timer = 0
+            # for event in pg.event.get():
+            #     if event.type == QUIT:
+            #         self.running = False
+            #     if event.type == KEYDOWN:
+            #         if event.key == K_SPACE and not self.paused:
+            #             self.bird.flap()
+            #         elif event.key == K_p:
+            #             self.paused = not self.paused
+            #
+            # if self.pipe_spawn_dt_timer >= self.pipe_spawn_dt_count:
+            #     pipe_y = random.randint(self.pipe_min_y, self.pipe_max_y)
+            #     pipe = Pipe(self.width, pipe_y)
+            #     self.pipes.add(pipe)
+            #     self.pipe_spawn_dt_timer = 0
 
-            self.bird.draw(self.screen)
-            self.pipes.draw(self.screen)
-            self.floor.draw(self.screen)
+            # self.bird.draw(self.screen)
+            # self.pipes.draw(self.screen)
+            # self.floor.draw(self.screen)
 
-            if not self.paused:
-                self.bird.update(self.dt)
-                self.floor.update(self.dt)
-                self.pipes.update(self.dt)
+            # if not self.paused:
+            #     self.bird.update(self.dt)
+            #     self.floor.update(self.dt)
+            #     self.pipes.update(self.dt)
 
-            if pg.sprite.spritecollide(self.bird, self.pipes, False, pg.sprite.collide_mask): # ty:ignore
-                exit()
+            # if pg.sprite.spritecollide(self.bird, self.pipes, False, pg.sprite.collide_mask): # ty:ignore
+            #     exit()
 
-            for pipe in self.pipes:
-                if not pipe.passed and pipe.rect.right < self.bird.rect.centerx:
-                    pipe.passed = True
-                    print("score")
+            # for pipe in self.pipes:
+            #     if not pipe.passed and pipe.rect.right < self.bird.rect.centerx:
+            #         pipe.passed = True
+            #         print("score")
 
-            pg.display.flip()
-            self.dt = self.clock.tick(self.fps) / 1000
-            self.pipe_spawn_dt_timer += self.dt
+            # pg.display.flip()
+            # self.dt = self.clock.tick(self.fps) / 1000
+            # self.pipe_spawn_dt_timer += self.dt
+        
+        self.manager.scene.handle_event(pg.event.get())
+        self.manager.scene.update()
+        self.manager.scene.render()
