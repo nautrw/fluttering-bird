@@ -17,6 +17,13 @@
     }
   },
   "label": {
+    "colours": {
+      "normal_text": "#ffffff",
+      "text_shadow": "#000000"
+    },
+    "misc": {
+      "text_shadow_size": "2"
+    },
     "font": {
       "name": "Boxy Bold",
       "size": "26",
