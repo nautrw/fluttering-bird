@@ -10,7 +10,6 @@
       "shape": "rounded_rectangle",
       "shape_corner_radius": "10"
     },
-    "prototype": "#text_elemen_prototype",
     "font": {
       "name": "Boxy Bold",
       "size": "36",
