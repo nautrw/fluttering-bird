@@ -63,7 +63,8 @@ class MainGameScene(Scene):
                 pipe.passed = True
                 print("score")
 
-
         self.bird.update(dt)
         self.floor.update(dt)
         self.pipes.update(dt)
+
+        self.pipe_spawn_dt_timer += dt
