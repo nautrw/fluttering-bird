@@ -67,6 +67,7 @@ class MainGameScene(Scene):
             if not pipe.passed and pipe.rect.right < self.bird.rect.centerx:
                 pipe.passed = True
                 self.score += 1
+                self.score_label.set_text(str(self.score))
 
         self.bird.update(dt)
         self.floor.update(dt)
