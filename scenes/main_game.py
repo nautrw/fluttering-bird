@@ -32,6 +32,10 @@ class MainGameScene(Scene):
         self.pipe_min_y = int(load_sprite('pipe').get_rect().height * .35)
         self.pipe_max_y = floor_y - 150
 
+        self.score = 0
+        score_rect = pg.Rect(0, 0, 300, 200)
+        self.score_label = pgui.elements.UILabel(score_rect, str(self.score), self.manager.ui_manager, anchors={'centerx': 'centerx'})
+
     def handle_events(self, events: list[pg.event.Event]):
         for event in events:
             self.manager.ui_manager.process_events(event)
@@ -45,6 +49,7 @@ class MainGameScene(Scene):
         self.bird.draw(self.manager.screen)
         self.pipes.draw(self.manager.screen)
         self.floor.draw(self.manager.screen)
+        self.manager.ui_manager.draw_ui(self.manager.screen)
     
     def update(self, dt: int | float):
         self.manager.ui_manager.update(dt)
@@ -61,7 +66,7 @@ class MainGameScene(Scene):
         for pipe in self.pipes:
             if not pipe.passed and pipe.rect.right < self.bird.rect.centerx:
                 pipe.passed = True
-                print("score")
+                self.score += 1
 
         self.bird.update(dt)
         self.floor.update(dt)
