@@ -1,0 +1,27 @@
+{
+  "defaults": {
+    "colours": {
+      "normal_bg": "#606060",
+      "hovered_bg": "#707070"
+    }
+  },
+  "button": {
+    "misc": {
+      "shape": "rounded_rectangle",
+      "shape_corner_radius": "10"
+    },
+    "prototype": "#text_elemen_prototype",
+    "font": {
+      "name": "Boxy Bold",
+      "size": "36",
+      "regular_path": "assets/fonts/Boxy-Bold.ttf"
+    }
+  },
+  "label": {
+    "font": {
+      "name": "Boxy Bold",
+      "size": "26",
+      "regular_path": "assets/fonts/Boxy-Bold.ttf"
+    }
+  }
+}

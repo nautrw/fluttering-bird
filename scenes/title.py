@@ -7,7 +7,7 @@ class TitleScene(Scene):
     def __init__(self, manager: SceneManager):
         super().__init__(manager)
 
-        title_rect = pg.Rect(0, 0, 200, 100)
+        title_rect = pg.Rect(0, 0, 300, 200)
         self.title = pgui.elements.UILabel(title_rect, "Fluttering Bird", self.manager.ui_manager, anchors = {'centerx': 'centerx'})
 
         play_button_rect = pg.Rect(0, 0, 200, 100)

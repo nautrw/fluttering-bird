@@ -26,7 +26,7 @@ class Game:
         self.clock = pg.time.Clock()
         self.dt = 0
 
-        self.ui_manager = pgui.UIManager((self.width, self.height))
+        self.ui_manager = pgui.UIManager((self.width, self.height), 'assets/themes/theme.json')
         self.manager = SceneManager(self.screen, self.ui_manager)
         self.manager.go_to(TitleScene(self.manager))
 
