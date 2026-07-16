@@ -78,7 +78,3 @@ class Game:
             pg.display.flip()
             self.dt = self.clock.tick(self.fps) / 1000
             self.pipe_spawn_dt_timer += self.dt
-
-
-if __name__ == "__main__":
-    Game().run()
