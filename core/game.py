@@ -82,10 +82,8 @@ class Game:
                 exit()
 
             self.manager.scene.handle_events(pg.event.get())
-            self.manager.scene.update()
+            self.manager.scene.update(self.dt)
             self.manager.scene.render()
 
-            self.dt = self.clock.tick(self.fps) / 1000
-            self.ui_manager.update(self.dt)
-            self.ui_manager.draw_ui(self.screen)
             pg.display.flip()
+            self.dt = self.clock.tick(self.fps) / 1000

@@ -14,10 +14,9 @@ class Scene:
         self.manager = manager
 
     def handle_events(self, events: list[pg.event.Event]):
-        for event in events:
-            self.manager.ui_manager.process_events(event)
+        pass
     
-    def update(self):
+    def update(self, dt: int | float):
         pass
     
     def render(self):
