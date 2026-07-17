@@ -11,9 +11,9 @@
       "shape_corner_radius": "10"
     },
     "font": {
-      "name": "Boxy Bold",
+      "name": "Pizel",
       "size": "36",
-      "regular_path": "assets/fonts/Boxy-Bold.ttf"
+      "regular_path": "assets/fonts/Pizel.ttf"
     }
   },
   "label": {
@@ -25,9 +25,9 @@
       "text_shadow_size": "2"
     },
     "font": {
-      "name": "Boxy Bold",
+      "name": "Pizel",
       "size": "26",
-      "regular_path": "assets/fonts/Boxy-Bold.ttf"
+      "regular_path": "assets/fonts/Pizel.ttf"
     }
   }
 }
