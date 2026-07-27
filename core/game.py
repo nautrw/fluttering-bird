@@ -1,3 +1,4 @@
+import sys
 import random
 from math import floor
 
@@ -33,7 +34,7 @@ class Game:
     def run(self):
         while self.running: 
             if pg.event.get(QUIT):
-                exit()
+                sys.exit()
 
             self.manager.scene.handle_events(pg.event.get())
             self.manager.scene.update(self.dt)
