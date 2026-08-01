@@ -34,8 +34,8 @@ pyinstaller --onefile --windowed --add-data "assets\*;assets" --exclude-module n
 ```
 
 4. The executable should be in the `dist` folder:
-- On Linux: `./dist/Asteroid\ Shooter`
-- On Windows: `& '.\dist\Asteroid Shooter.exe'`
+- On Linux: `./dist/Fluttering\ Bird`
+- On Windows: `& '.\dist\Fluttering Bird.exe'`
 
 # Libraries Used
 - `pygame-ce` for graphics, user input, etc. (The main library of the project)
