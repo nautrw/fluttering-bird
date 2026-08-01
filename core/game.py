@@ -13,6 +13,8 @@ from entities.bird import Bird
 from entities.floor import Floor
 from entities.pipe import Pipe
 
+from utils import resource
+
 
 class Game:
     def __init__(self, width: int = 400, height=700, fps: int = 60):
@@ -27,7 +29,12 @@ class Game:
         self.clock = pg.time.Clock()
         self.dt = 0
 
-        self.ui_manager = pgui.UIManager((self.width, self.height), 'assets/themes/theme.json')
+        # Adding the font path and then reloading the theme makes it so that
+        # it will use the correct resource path when ran as a binary
+        self.ui_manager = pgui.UIManager((self.width, self.height))
+        self.ui_manager.add_font_paths("Pizel", resource("assets/fonts/Pizel.ttf"))
+        self.ui_manager.get_theme().load_theme('assets/themes/theme.json')
+
         self.manager = SceneManager(self.screen, self.ui_manager)
         self.manager.go_to(TitleScene(self.manager))
 
