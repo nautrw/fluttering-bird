@@ -13,7 +13,7 @@
     "font": {
       "name": "Pizel",
       "size": "36",
-      "regular_path": "assets/fonts/Pizel.ttf"
+      "regular_path": "./assets/fonts/Pizel.ttf"
     }
   },
   "label": {
