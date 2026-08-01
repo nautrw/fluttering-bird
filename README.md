@@ -11,8 +11,8 @@ Flappy bird knockoff implementation in Pygame(-ce).
 - Title and game over screens
 
 # Installation
-## Releases (LINUX ONLY)
-Head over to [the releases page](https://github.com/nautrw/fluttering-bird/releases/latest) and download the attached file for Linux. Run the file and the game should start.
+## Releases
+Head over to [the releases page](https://github.com/nautrw/fluttering-bird/releases/latest) and download the attached file for your operating system. Run the file and the game should start.
 ## Building From Scratch
 **Minimum Python Version Required: Python 3.9**
 1. Clone the GitHub repository onto your system
